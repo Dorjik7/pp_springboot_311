@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">.text-center {
+        text-align: center;
+    }
+    </style>
+    <title>User List</title>
+</head>
+<body>
+<h1 style="text-align: center;"><strong>Список пользователей</strong></h1>
+<br>
+<br>
+<div class="text-center"><input type="button" value="Добавить пользователя" onclick="window.location.href = 'add'"/></div>
+
+<br>
+<br>
+<table  border="2" align="center" cellspacing="2" cellpadding="3">
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Email</th>
+    </tr>
+    <tr  style="text-align:center" th:each="user : ${users}">
+        <td th:text="${user.getFirstName()}">Имя</td>
+        <td th:text="${user.getSecondName()}">Фамилия</td>
+        <td th:text="${user.getAge()}">Возраст</td>
+        <td th:text="${user.getEmail()}">Email</td>
+        <td> <a th:href="@{/{id}/edit(id=${user.getId()})}">
+            <button type="button">Изменить</button></a>
+            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                <input type="submit" value = "Удалить"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

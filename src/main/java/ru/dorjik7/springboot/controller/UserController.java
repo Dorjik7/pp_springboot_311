@@ -11,7 +11,6 @@ import ru.dorjik7.springboot.service.UserService;
 public class UserController {
     private UserService userservice;
 
-    @Autowired
     public UserController(UserService userservice) {
         this.userservice = userservice;
     }
